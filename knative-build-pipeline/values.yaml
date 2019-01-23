@@ -12,11 +12,9 @@ auth:
   git:
     username:
     password:
-    url:
-    # url: https://github.com
+    url: https://github.com
   docker:
     username:
     password:
-    url:
+    url: https://index.docker.io/v1/
     # url: https://gcr.io
-    # url: https://index.docker.io/v1/
