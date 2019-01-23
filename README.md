@@ -1,1 +1,1 @@
-# knative-build-pipeline helm chart
+# knative-build-pipeline

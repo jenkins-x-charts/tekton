@@ -1,0 +1,22 @@
+image:
+  tag: v20190122-e8caf467
+  kubeconfigwriter: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/kubeconfigwriter
+  credsinit: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/creds-init
+  gitinit: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/git-init
+  nop: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/nop
+  bash: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/bash
+  gsutil: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/gsutil
+  controller: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/controller
+  webhook: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/webhook
+auth:
+  git:
+    username:
+    password:
+    url:
+    # url: https://github.com
+  docker:
+    username:
+    password:
+    url:
+    # url: https://gcr.io
+    # url: https://index.docker.io/v1/
