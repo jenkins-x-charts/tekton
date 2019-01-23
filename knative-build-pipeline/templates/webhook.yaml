@@ -28,7 +28,7 @@ spec:
       - name: webhook
         # This is the Go import path for the binary that is containerized
         # and substituted here.
-        #image: {{ .Values.image.webhook }}:{{ .Values.image.tag }}
+        #image: {{ .Values.image.webhook }}:{{ .Values.image.upstreamtag }}
         image: gcr.io/jenkinsx-dev/webhook-5196284d4b1604a2cb46dab9c23ac663@sha256:c143d6d97d992dd4ed701ac1ceb52642e16c9ded476be4080bba48e22b0bd612
         env:
           - name: SYSTEM_NAMESPACE
