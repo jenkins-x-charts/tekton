@@ -6,6 +6,10 @@ First add the Jenkins X chart repository
 ```sh
 helm repo add jenkins-x https://storage.googleapis.com/chartmuseum.jenkins-x.io
 ```
+If it already exists be sure to update the local cache
+```
+helm repo update
+```
 
 ## Basic install
 ```
@@ -18,7 +22,7 @@ If you are working with private git repositories or require secrets to tag or pe
 GitHub Example:
 
 ```sh
-helm upgrade --install --set auth.git.username=bot-user --auth.git.password=123456abcdef --auth.git.url=https://github.com knative-build-pipeline jenkins-x/knative-build-pipeline 
+helm upgrade --install --set auth.git.username=bot-user --set auth.git.password=123456abcdef --set auth.git.url=https://github.com knative-build-pipeline jenkins-x/knative-build-pipeline 
 ```
 ## Authenticated Docker registries
 If you are pushing images to authenticated docker registries you can provide basic authentication which will be automatically mounted into Knative Build Pipline pods.
@@ -26,7 +30,7 @@ If you are pushing images to authenticated docker registries you can provide bas
 DockerHub Example:
 
 ```sh
-helm upgrade --install --set auth.docker.username=fred --auth.docker.password=flintstone --auth.docker.url=https://index.docker.io/v1  knative-build-pipeline jenkins-x/knative-build-pipeline 
+helm upgrade --install --set auth.docker.username=fred --set auth.docker.password=flintstone --set auth.docker.url=https://index.docker.io/v1  knative-build-pipeline jenkins-x/knative-build-pipeline 
 ```
 ## Configuration options
 
