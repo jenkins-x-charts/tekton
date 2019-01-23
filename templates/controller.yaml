@@ -25,7 +25,8 @@ spec:
       serviceAccountName: {{ template "pipeline.name" . }}
       containers:
       - name: {{ template "pipeline.name" . }}
-        image: {{ .Values.pipeline.image.controller }}:{{ .Values.pipeline.image.tag }}
+        #image: {{ .Values.pipeline.image.controller }}:{{ .Values.pipeline.image.tag }}
+        image: gcr.io/jenkinsx-dev/controller-7cb61323de6451022678822f2a2d2291@sha256:37eb2e7722551ddf40c68a2516b4ab9c285b11d9f80266bab0978ad34f5ec8c2
         args: [
           "-logtostderr",
           "-stderrthreshold", "INFO",
@@ -47,4 +48,4 @@ spec:
       volumes:
         - name: config-logging
           configMap:
-            name: pipeline-logging
+            name: config-logging
