@@ -25,17 +25,17 @@ spec:
       serviceAccountName: {{ template "pipeline.name" . }}
       containers:
       - name: {{ template "pipeline.name" . }}
-        #image: {{ .Values.pipeline.image.controller }}:{{ .Values.pipeline.image.tag }}
+        #image: {{ .Values.image.controller }}:{{ .Values.image.tag }}
         image: gcr.io/jenkinsx-dev/controller-7cb61323de6451022678822f2a2d2291@sha256:37eb2e7722551ddf40c68a2516b4ab9c285b11d9f80266bab0978ad34f5ec8c2
         args: [
           "-logtostderr",
           "-stderrthreshold", "INFO",
-          "-kubeconfig-writer-image", "{{ .Values.pipeline.image.kubeconfigwriter }}:{{ .Values.pipeline.image.tag }}",
-          "-creds-image", "{{ .Values.pipeline.image.credsinit }}:{{ .Values.pipeline.image.tag }}",
-          "-git-image", "{{ .Values.pipeline.image.gitinit }}:{{ .Values.pipeline.image.tag }}",
-          "-nop-image", "{{ .Values.pipeline.image.nop }}:{{ .Values.pipeline.image.tag }}",
-          "-bash-noop-image", "{{ .Values.pipeline.image.bash }}:{{ .Values.pipeline.image.tag }}",
-          "-gsutil-image", "{{ .Values.pipeline.image.gsutil }}:{{ .Values.pipeline.image.tag }}",
+          "-kubeconfig-writer-image", "{{ .Values.image.kubeconfigwriter }}:{{ .Values.image.tag }}",
+          "-creds-image", "{{ .Values.image.credsinit }}:{{ .Values.image.tag }}",
+          "-git-image", "{{ .Values.image.gitinit }}:{{ .Values.image.tag }}",
+          "-nop-image", "{{ .Values.image.nop }}:{{ .Values.image.tag }}",
+          "-bash-noop-image", "{{ .Values.image.bash }}:{{ .Values.image.tag }}",
+          "-gsutil-image", "{{ .Values.image.gsutil }}:{{ .Values.image.tag }}",
         ]
         env:
           - name: SYSTEM_NAMESPACE
