@@ -30,7 +30,7 @@ If you are pushing images to authenticated docker registries you can provide bas
 DockerHub Example:
 
 ```sh
-helm upgrade --install --set auth.docker.username=fred --set auth.docker.password=flintstone --set auth.docker.url=https://index.docker.io/v1  knative-build-pipeline jenkins-x/knative-build-pipeline 
+helm upgrade --install --set auth.docker.username=fred --set auth.docker.password=flintstone --set auth.docker.url=https://index.docker.io/v1/  knative-build-pipeline jenkins-x/knative-build-pipeline 
 ```
 ## Configuration options
 
