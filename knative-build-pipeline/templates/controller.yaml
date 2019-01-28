@@ -26,7 +26,7 @@ spec:
       containers:
       - name: {{ template "pipeline.name" . }}
         #image: {{ .Values.image.controller }}:{{ .Values.image.upstreamtag }}
-        image: gcr.io/jenkinsx-dev/controller-7cb61323de6451022678822f2a2d2291@sha256:37eb2e7722551ddf40c68a2516b4ab9c285b11d9f80266bab0978ad34f5ec8c2
+        image: gcr.io/jenkinsx-dev/controller-7cb61323de6451022678822f2a2d2291@sha256:2ad8a7d97dad3dae49d51b7aba59cdf738d4a61788799ab26d1a07361fa5e946
         args: [
           "-logtostderr",
           "-stderrthreshold", "INFO",
