@@ -1,5 +1,5 @@
 image:
-  upstreamtag: v20190217-ba56c45b
+  upstreamtag: v20190221-c649b42c
   kubeconfigwriter: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/kubeconfigwriter
   credsinit: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/creds-init
   gitinit: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/git-init
