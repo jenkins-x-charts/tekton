@@ -1,4 +1,4 @@
-# knative-build-pipeline helm chart
+# tekton helm chart
 
 ## Setup
 First add the Jenkins X chart repository
@@ -13,24 +13,24 @@ helm repo update
 
 ## Basic install
 ```
-helm upgrade --install knative-build-pipeline jenkins-x/knative-build-pipeline
+helm upgrade --install tekton jenkins-x/tekton
 ```
 
 ## Authenticated Git requests
-If you are working with private git repositories or require secrets to tag or perform remote git actions then you can provide basic authentication which will be automatically mounted into Knative Build Pipline pods.  We recommend using a bot user and a personal access token.
+If you are working with private git repositories or require secrets to tag or perform remote git actions then you can provide basic authentication which will be automatically mounted into Tekton Pipline pods.  We recommend using a bot user and a personal access token.
 
 GitHub Example:
 
 ```sh
-helm upgrade --install --set auth.git.username=bot-user --set auth.git.password=123456abcdef --set auth.git.url=https://github.com knative-build-pipeline jenkins-x/knative-build-pipeline 
+helm upgrade --install --set auth.git.username=bot-user --set auth.git.password=123456abcdef --set auth.git.url=https://github.com tekton jenkins-x/tekton 
 ```
 ## Authenticated Docker registries
-If you are pushing images to authenticated docker registries you can provide basic authentication which will be automatically mounted into Knative Build Pipline pods.
+If you are pushing images to authenticated docker registries you can provide basic authentication which will be automatically mounted into Knative Tekton Pipline pods.
 
 DockerHub Example:
 
 ```sh
-helm upgrade --install --set auth.docker.username=fred --set auth.docker.password=flintstone --set auth.docker.url=https://index.docker.io/v1/  knative-build-pipeline jenkins-x/knative-build-pipeline 
+helm upgrade --install --set auth.docker.username=fred --set auth.docker.password=flintstone --set auth.docker.url=https://index.docker.io/v1/  tekton jenkins-x/tekton 
 ```
 ## Configuration options
 
