@@ -3,7 +3,7 @@
 Expand the name of the chart.
 */}}
 
-{{- define "pipeline.name" -}}
+{{- define "tekton.name" -}}
 {{- default "tekton-pipelines" .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
