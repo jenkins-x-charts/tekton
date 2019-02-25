@@ -14,17 +14,17 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "pipeline.name" . }}-controller
+  name: {{ template "tekton.name" . }}-controller
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: {{ template "pipeline.name" . }}-controller
+        app: {{ template "tekton.name" . }}-controller
     spec:
-      serviceAccountName: {{ template "pipeline.name" . }}
+      serviceAccountName: {{ template "tekton.name" . }}
       containers:
-      - name: {{ template "pipeline.name" . }}
+      - name: {{ template "tekton.name" . }}
         image: {{ .Values.image.controller }}:{{ .Values.image.upstreamtag }}
         args: [
           "-logtostderr",

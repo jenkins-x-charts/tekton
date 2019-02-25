@@ -16,8 +16,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: {{ template "pipeline.name" . }}-controller
-  name: {{ template "pipeline.name" . }}-controller
+    app: {{ template "tekton.name" . }}-controller
+  name: {{ template "tekton.name" . }}-controller
 spec:
   ports:
   - name: metrics
@@ -25,4 +25,4 @@ spec:
     protocol: TCP
     targetPort: 9090
   selector:
-    app: {{ template "pipeline.name" . }}-controller
+    app: {{ template "tekton.name" . }}-controller

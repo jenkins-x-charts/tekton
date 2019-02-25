@@ -15,15 +15,15 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "pipeline.name" . }}-webhook
+  name: {{ template "tekton.name" . }}-webhook
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: {{ template "pipeline.name" . }}-webhook
+        app: {{ template "tekton.name" . }}-webhook
     spec:
-      serviceAccountName: {{ template "pipeline.name" . }}
+      serviceAccountName: {{ template "tekton.name" . }}
       containers:
       - name: webhook
         # This is the Go import path for the binary that is containerized
