@@ -106,7 +106,7 @@ rules:
   verbs:
   - get
   - list
- - apiGroups:
+- apiGroups:
   - vault.banzaicloud.com
   resources:
   - vaults
