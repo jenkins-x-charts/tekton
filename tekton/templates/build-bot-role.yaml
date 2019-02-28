@@ -7,17 +7,12 @@ rules:
   - ""
   resources:
   - secrets
+  - configmaps
+  - services
   verbs:
   - list
   - get
   - watch
-- apiGroups:
-  - ""
-  resources:
-  - configmaps
-  - services
-  verbs:
-  - get
 - apiGroups:
   - ""
   resources:
