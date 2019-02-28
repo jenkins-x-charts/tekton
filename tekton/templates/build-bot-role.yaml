@@ -36,6 +36,7 @@ rules:
   - jenkins.io
   resources:
   - pipelineactivities
+  - sourcerepositories
   verbs:
   - get
   - create
