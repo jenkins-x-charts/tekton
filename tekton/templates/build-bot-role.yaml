@@ -82,6 +82,7 @@ rules:
   - jenkins.io
   resources:
   - pipelineactivities
+  - pipelinestructures
   verbs:
   - get
   - create
