@@ -1,13 +1,13 @@
 image:
-  upstreamtag: v20190306-eee89b02
-  kubeconfigwriter: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/kubeconfigwriter
-  credsinit: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/creds-init
-  gitinit: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/git-init
-  nop: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/nop
-  bash: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/bash
-  gsutil: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/gsutil
-  controller: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/controller
-  webhook: gcr.io/knative-nightly/github.com/knative/build-pipeline/cmd/webhook
+  upstreamtag: v20190308-186ac3b6
+  kubeconfigwriter: gcr.io/abayer-jx-experiment/kubeconfigwriter
+  credsinit: gcr.io/abayer-jx-experiment/creds-init
+  gitinit: gcr.io/abayer-jx-experiment/git-init
+  nop: gcr.io/abayer-jx-experiment/nop
+  bash: gcr.io/abayer-jx-experiment/bash
+  gsutil: gcr.io/abayer-jx-experiment/gsutil
+  controller: gcr.io/abayer-jx-experiment/controller
+  webhook: gcr.io/abayer-jx-experiment/webhook
 auth:
   git:
     username:
