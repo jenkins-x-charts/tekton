@@ -95,6 +95,7 @@ rules:
   - create
   - list
   - get
+  - patch
   - update
 - apiGroups:
   - jenkins.io
