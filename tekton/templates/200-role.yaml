@@ -1,5 +1,5 @@
-{{- if .Values.rbac.cluster }}
-kind: ClusterRole
+{{- if not .Values.rbac.cluster }}
+kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: {{ template "tekton.name" . }}
