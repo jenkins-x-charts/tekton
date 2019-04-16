@@ -18,5 +18,9 @@ auth:
     password:
     url: https://index.docker.io/v1/
     # url: https://gcr.io
+
+webhook:
+  enabled: true
+
 rbac:
   cluster: true
