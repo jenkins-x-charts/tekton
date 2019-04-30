@@ -36,6 +36,7 @@ spec:
           "-bash-noop-image", "{{ .Values.image.bash }}:{{ .Values.image.upstreamtag }}",
           "-gsutil-image", "{{ .Values.image.gsutil }}:{{ .Values.image.upstreamtag }}",
           "-entrypoint-image", "{{ .Values.image.entrypoint }}:{{ .Values.image.upstreamtag }}",
+          "-namespace", "{{ .Release.Namespace }}",
         ]
         env:
           - name: SYSTEM_NAMESPACE

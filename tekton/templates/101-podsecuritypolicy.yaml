@@ -14,7 +14,7 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: tekton-pipelines
+  name: {{ template "tekton.name" . }}
 spec:
   privileged: false
   allowPrivilegeEscalation: false
