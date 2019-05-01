@@ -4,28 +4,38 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     https://www.apache.org/licenses/LICENSE-2.0
+#     http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
 metadata:
-  name: clustertasks.tekton.dev
+  name: {{ template "tekton.name" . }}
 spec:
-  group: tekton.dev
-  names:
-    kind: ClusterTask
-    plural: clustertasks
-    categories:
-    - all
-    - tekton-pipelines
-  scope: Cluster
-  # Opt into the status subresource so metadata.generation
-  # starts to increment
-  subresources:
-    status: {}
-  version: v1alpha1
+  privileged: false
+  allowPrivilegeEscalation: false
+  volumes:
+  - 'emptyDir'
+  - 'configMap'
+  - 'secret'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: 'RunAsAny'
+  seLinux:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+    - min: 1
+      max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+    - min: 1
+      max: 65535
