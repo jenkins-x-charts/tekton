@@ -1,14 +1,14 @@
 image:
-  upstreamtag: v0.3.1
-  kubeconfigwriter: gcr.io/gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/kubeconfigwriter
-  credsinit: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/creds-init
-  gitinit: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init
-  nop: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop
-  bash: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/bash
-  gsutil: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/gsutil
-  controller: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller
-  webhook: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook
-  entrypoint: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint
+  upstreamtag: v20190507-07ac30e7
+  kubeconfigwriter: gcr.io/abayer-jx-experiment/kubeconfigwriter
+  credsinit: gcr.io/abayer-jx-experiment/creds-init
+  gitinit: gcr.io/abayer-jx-experiment/git-init
+  nop: gcr.io/abayer-jx-experiment/nop
+  bash: gcr.io/abayer-jx-experiment/bash
+  gsutil: gcr.io/abayer-jx-experiment/gsutil
+  controller: gcr.io/abayer-jx-experiment/controller
+  webhook: gcr.io/abayer-jx-experiment/webhook
+  entrypoint: gcr.io/abayer-jx-experiment/entrypoint
 auth:
   git:
     username:
