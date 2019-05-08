@@ -1,5 +1,5 @@
 image:
-  upstreamtag: v20190507-07ac30e7
+  upstreamtag: v20190508-91b53326
   kubeconfigwriter: gcr.io/abayer-jx-experiment/kubeconfigwriter
   credsinit: gcr.io/abayer-jx-experiment/creds-init
   gitinit: gcr.io/abayer-jx-experiment/git-init
