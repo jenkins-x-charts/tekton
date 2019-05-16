@@ -25,3 +25,6 @@ webhook:
 
 rbac:
   cluster: true
+
+pvc:
+  size: 5Gi
