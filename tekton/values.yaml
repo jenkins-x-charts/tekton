@@ -9,6 +9,7 @@ image:
   controller: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller
   webhook: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook
   entrypoint: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint
+  pullrequest: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/pullrequest-init
 auth:
   git:
     username:
