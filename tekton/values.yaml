@@ -1,5 +1,5 @@
 image:
-  upstreamtag: v0.4.0
+  upstreamtag: v0.5.1
   kubeconfigwriter: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/kubeconfigwriter
   credsinit: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/creds-init
   gitinit: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init
