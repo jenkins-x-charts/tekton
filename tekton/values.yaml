@@ -21,9 +21,6 @@ auth:
     url: https://index.docker.io/v1/
     # url: https://gcr.io
 
-serviceaccount:
-  enabled: true
-
 webhook:
   enabled: true
 
