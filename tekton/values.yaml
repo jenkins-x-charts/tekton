@@ -27,8 +27,5 @@ webhook:
 rbac:
   cluster: true
 
-serviceaccount:
-  enabled: true
-
 pvc:
   size: 5Gi
