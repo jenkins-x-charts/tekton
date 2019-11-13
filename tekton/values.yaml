@@ -24,6 +24,9 @@ auth:
 webhook:
   enabled: true
 
+serviceaccount:
+  enabled: true
+
 rbac:
   cluster: true
 
