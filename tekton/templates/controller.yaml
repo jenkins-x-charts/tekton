@@ -15,6 +15,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "tekton.name" . }}-controller
+  namespace: {{ .Release.Namespace }}
   labels:
     app.kubernetes.io/name: {{ template "tekton.name" . }}
     app.kubernetes.io/component: controller
@@ -47,7 +48,6 @@ spec:
           "-pr-image", "{{ .Values.image.pullrequest }}:{{ .Values.image.upstreamtag }}",
           "-imagedigest-exporter-image", "{{ .Values.image.imagedigestexporter }}.{{ .Values.image.upstreamtag }}",
           "-build-gcs-fetcher-image", "{{ .Values.image.gcsfetcher }}.{{ .Values.image.upstreamtag }}",
-          "-namespace", "{{ .Release.Namespace }}",
         ]
         env:
           - name: SYSTEM_NAMESPACE

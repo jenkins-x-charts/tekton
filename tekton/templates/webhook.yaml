@@ -17,6 +17,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "tekton.name" . }}-webhook
+  namespace: {{ .Release.Namespace }}
   labels:
     app.kubernetes.io/name: {{ template "tekton.name" . }}
     app.kubernetes.io/component: webhook-controller
