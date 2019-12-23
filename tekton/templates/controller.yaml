@@ -38,12 +38,14 @@ spec:
       - name: {{ template "tekton.name" . }}
         image: {{ .Values.image.controller }}:{{ .Values.image.upstreamtag }}
         args: [
+          "-logtostderr",
+          "-stderrthreshold", "INFO",
           "-kubeconfig-writer-image", "{{ .Values.image.kubeconfigwriter }}:{{ .Values.image.upstreamtag }}",
           "-creds-image", "{{ .Values.image.credsinit }}:{{ .Values.image.upstreamtag }}",
           "-git-image", "{{ .Values.image.gitinit }}:{{ .Values.image.upstreamtag }}",
-          "-nop-image", "tianon/true",
-          "-shell-image", "busybox",
-          "-gsutil-image", "google/cloud-sdk",
+          "-nop-image", "{{ .Values.image.nop }}:{{ .Values.image.upstreamtag }}",
+          "-bash-image", "{{ .Values.image.bash }}:{{ .Values.image.upstreamtag }}",
+          "-gsutil-image", "{{ .Values.image.gsutil }}:{{ .Values.image.upstreamtag }}",
           "-entrypoint-image", "{{ .Values.image.entrypoint }}:{{ .Values.image.upstreamtag }}",
           "-pr-image", "{{ .Values.image.pullrequest }}:{{ .Values.image.upstreamtag }}",
           "-imagedigest-exporter-image", "{{ .Values.image.imagedigestexporter }}.{{ .Values.image.upstreamtag }}",
