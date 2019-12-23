@@ -44,7 +44,7 @@ spec:
           "-creds-image", "{{ .Values.image.credsinit }}:{{ .Values.image.upstreamtag }}",
           "-git-image", "{{ .Values.image.gitinit }}:{{ .Values.image.upstreamtag }}",
           "-nop-image", "{{ .Values.image.nop }}:{{ .Values.image.upstreamtag }}",
-          "-bash-image", "{{ .Values.image.bash }}:{{ .Values.image.upstreamtag }}",
+          "-bash-noop-image", "{{ .Values.image.bash }}:{{ .Values.image.upstreamtag }}",
           "-gsutil-image", "{{ .Values.image.gsutil }}:{{ .Values.image.upstreamtag }}",
           "-entrypoint-image", "{{ .Values.image.entrypoint }}:{{ .Values.image.upstreamtag }}",
           "-pr-image", "{{ .Values.image.pullrequest }}:{{ .Values.image.upstreamtag }}",
