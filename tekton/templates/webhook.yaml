@@ -13,16 +13,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "tekton.name" . }}-webhook
+  labels:
+    app.kubernetes.io/name: {{ template "tekton.name" . }}
+    app.kubernetes.io/component: webhook-controller
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "tekton.name" . }}-webhook
   template:
     metadata:
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
       labels:
         app: {{ template "tekton.name" . }}-webhook
+        app.kubernetes.io/name: {{ template "tekton.name" . }}
+        app.kubernetes.io/component: webhook-controller
     spec:
       serviceAccountName: {{ template "tekton.name" . }}
       containers:

@@ -11,32 +11,42 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "tekton.name" . }}-controller
+  labels:
+    app.kubernetes.io/name: {{ template "tekton.name" . }}
+    app.kubernetes.io/component: controller
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "tekton.name" . }}-controller
   template:
     metadata:
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
       labels:
         app: {{ template "tekton.name" . }}-controller
+        app.kubernetes.io/name: {{ template "tekton.name" . }}
+        app.kubernetes.io/component: controller
     spec:
       serviceAccountName: {{ template "tekton.name" . }}
       containers:
       - name: {{ template "tekton.name" . }}
         image: {{ .Values.image.controller }}:{{ .Values.image.upstreamtag }}
         args: [
-          "-logtostderr",
-          "-stderrthreshold", "INFO",
           "-kubeconfig-writer-image", "{{ .Values.image.kubeconfigwriter }}:{{ .Values.image.upstreamtag }}",
           "-creds-image", "{{ .Values.image.credsinit }}:{{ .Values.image.upstreamtag }}",
           "-git-image", "{{ .Values.image.gitinit }}:{{ .Values.image.upstreamtag }}",
-          "-nop-image", "{{ .Values.image.nop }}:{{ .Values.image.upstreamtag }}",
-          "-bash-noop-image", "{{ .Values.image.bash }}:{{ .Values.image.upstreamtag }}",
-          "-gsutil-image", "{{ .Values.image.gsutil }}:{{ .Values.image.upstreamtag }}",
+          "-nop-image", "tianon/true",
+          "-shell-image", "busybox",
+          "-gsutil-image", "google/cloud-sdk",
           "-entrypoint-image", "{{ .Values.image.entrypoint }}:{{ .Values.image.upstreamtag }}",
           "-pr-image", "{{ .Values.image.pullrequest }}:{{ .Values.image.upstreamtag }}",
+          "-imagedigest-exporter-image", "{{ .Values.image.imagedigestexporter }}.{{ .Values.image.upstreamtag }}",
+          "-build-gcs-fetcher-image", "{{ .Values.image.gcsfetcher }}.{{ .Values.image.upstreamtag }}",
           "-namespace", "{{ .Release.Namespace }}",
         ]
         env:
@@ -44,6 +54,12 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
+          - name: CONFIG_LOGGING_NAME
+            value: config-logging
+          - name: CONFIG_OBSERVABILITY_NAME
+            value: config-observability
+          - name: METRICS_DOMAIN
+            value: tekton.dev/pipeline
         volumeMounts:
         - name: config-logging
           mountPath: /etc/config-logging
