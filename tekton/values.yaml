@@ -1,17 +1,17 @@
 image:
-  upstreamtag: v0.8.0
-  kubeconfigwriter: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/kubeconfigwriter
-  credsinit: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/creds-init
-  gitinit: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init
-  nop: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop
-  bash: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/bash
-  gsutil: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/gsutil
-  controller: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller
-  webhook: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook
-  entrypoint: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint
-  pullrequest: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/pullrequest-init
-  imagedigestexporter: github.com/tektoncd/pipeline/cmd/imagedigestexporter
-  gcsfetcher: gcr.io/tekton-releases/github.com/tektoncd/pipeline/vendor/github.com/googlecloudplatform/cloud-builders/gcs-fetcher/cmd/gcs-fetcher
+  upstreamtag: v20191226-3b2fe236a
+  kubeconfigwriter: gcr.io/abayer-pipeline-crd/kubeconfigwriter
+  credsinit: gcr.io/abayer-pipeline-crd/creds-init
+  gitinit: gcr.io/abayer-pipeline-crd/git-init
+  nop: gcr.io/abayer-pipeline-crd/nop
+  bash: gcr.io/abayer-pipeline-crd/bash
+  gsutil: gcr.io/abayer-pipeline-crd/gsutil
+  controller: gcr.io/abayer-pipeline-crd/controller
+  webhook: gcr.io/abayer-pipeline-crd/webhook
+  entrypoint: gcr.io/abayer-pipeline-crd/entrypoint
+  pullrequest: gcr.io/abayer-pipeline-crd/pullrequest-init
+  imagedigestexporter: gcr.io/abayer-pipeline-crd/imagedigestexporter
+  gcsfetcher: gcr.io/tekton-releases/github.com/tektoncd/pipeline/vendor/github.com/googlecloudplatform/cloud-builders/gcs-fetcher/cmd/gcs-fetcher:v0.8.0
 auth:
   git:
     username:

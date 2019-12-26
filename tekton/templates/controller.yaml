@@ -49,7 +49,7 @@ spec:
           "-entrypoint-image", "{{ .Values.image.entrypoint }}:{{ .Values.image.upstreamtag }}",
           "-pr-image", "{{ .Values.image.pullrequest }}:{{ .Values.image.upstreamtag }}",
           "-imagedigest-exporter-image", "{{ .Values.image.imagedigestexporter }}.{{ .Values.image.upstreamtag }}",
-          "-build-gcs-fetcher-image", "{{ .Values.image.gcsfetcher }}.{{ .Values.image.upstreamtag }}",
+          "-build-gcs-fetcher-image", "{{ .Values.image.gcsfetcher }}",
         ]
         env:
           - name: SYSTEM_NAMESPACE
