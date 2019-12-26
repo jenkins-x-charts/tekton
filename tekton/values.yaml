@@ -1,16 +1,16 @@
 image:
   upstreamtag: v20191226-3b2fe236a
-  kubeconfigwriter: gcr.io/abayer-pipeline-crd/kubeconfigwriter
-  credsinit: gcr.io/abayer-pipeline-crd/creds-init
-  gitinit: gcr.io/abayer-pipeline-crd/git-init
-  nop: gcr.io/abayer-pipeline-crd/nop
-  bash: gcr.io/abayer-pipeline-crd/bash
-  gsutil: gcr.io/abayer-pipeline-crd/gsutil
-  controller: gcr.io/abayer-pipeline-crd/controller
-  webhook: gcr.io/abayer-pipeline-crd/webhook
-  entrypoint: gcr.io/abayer-pipeline-crd/entrypoint
-  pullrequest: gcr.io/abayer-pipeline-crd/pullrequest-init
-  imagedigestexporter: gcr.io/abayer-pipeline-crd/imagedigestexporter
+  kubeconfigwriter: gcr.io/abayer-pipeline-crd/tekton-for-jx/kubeconfigwriter
+  credsinit: gcr.io/abayer-pipeline-crd/tekton-for-jx/creds-init
+  gitinit: gcr.io/abayer-pipeline-crd/tekton-for-jx/git-init
+  nop: gcr.io/abayer-pipeline-crd/tekton-for-jx/nop
+  bash: gcr.io/abayer-pipeline-crd/tekton-for-jx/bash
+  gsutil: gcr.io/abayer-pipeline-crd/tekton-for-jx/gsutil
+  controller: gcr.io/abayer-pipeline-crd/tekton-for-jx/controller
+  webhook: gcr.io/abayer-pipeline-crd/tekton-for-jx/webhook
+  entrypoint: gcr.io/abayer-pipeline-crd/tekton-for-jx/entrypoint
+  pullrequest: gcr.io/abayer-pipeline-crd/tekton-for-jx/pullrequest-init
+  imagedigestexporter: gcr.io/abayer-pipeline-crd/tekton-for-jx/imagedigestexporter
   gcsfetcher: gcr.io/tekton-releases/github.com/tektoncd/pipeline/vendor/github.com/googlecloudplatform/cloud-builders/gcs-fetcher/cmd/gcs-fetcher:v0.8.0
 auth:
   git:
