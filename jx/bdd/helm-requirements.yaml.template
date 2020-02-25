@@ -3,7 +3,7 @@ dependencies:
     repository: http://chartmuseum.jenkins-x.io
   - alias: tekton
     name: tekton
-    repository: http://chartmuseum.jenkins-x.io
+    repository: https://chartmuseum-jx.jenkins-x.live
     version: $VERSION
   - alias: prow
     condition: prow.enabled
