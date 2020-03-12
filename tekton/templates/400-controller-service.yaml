@@ -1,3 +1,4 @@
+{{- if .Values.controller.enabled }}
 # Copyright 2018 Knative Authors LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,3 +27,4 @@ spec:
     targetPort: 9090
   selector:
     app: {{ template "tekton.name" . }}-controller
+{{- end -}}

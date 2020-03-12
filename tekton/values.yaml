@@ -23,6 +23,9 @@ auth:
     url: https://index.docker.io/v1/
     # url: https://gcr.io
 
+controller:
+  enabled: true
+
 webhook:
   enabled: true
 
