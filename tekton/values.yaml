@@ -1,5 +1,5 @@
 image:
-  upstreamtag: 0.8.0-for-jx
+  upstreamtag: v20200324-8dd4c2e8
   kubeconfigwriter: gcr.io/abayer-pipeline-crd/tekton-for-jx/kubeconfigwriter
   credsinit: gcr.io/abayer-pipeline-crd/tekton-for-jx/creds-init
   gitinit: gcr.io/abayer-pipeline-crd/tekton-for-jx/git-init
