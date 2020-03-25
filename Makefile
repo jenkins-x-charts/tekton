@@ -41,3 +41,10 @@ endif
 
 delete-from-chartmuseum:
 	curl --fail -u $(CHARTMUSEUM_USER):$(CHARTMUSEUM_PASS) -X DELETE $(CHART_REPO)/api/charts/$(NAME)/$(VERSION)
+
+test:
+	cd tests && go test -v
+
+test-regen:
+	cd tests && export HELM_UNIT_REGENERATE_EXPECTED=true && go test -v
+
