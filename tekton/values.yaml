@@ -26,6 +26,9 @@ auth:
 controller:
   enabled: true
 
+serviceaccount:
+  enabled: true
+
 webhook:
   enabled: true
 
