@@ -1,3 +1,4 @@
+# Source: tekton/templates/251-bot-serviceaccount.yaml
 # Copyright 2018 The Knative Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,16 +12,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-{{- if .Values.serviceaccount.enabled }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ template "build-bot.name" . }}
+  name: tekton-bot
 secrets:
-{{- if .Values.auth.git.username }}
-- name: knative-git-user-pass
-{{- end }}
-{{- if .Values.auth.docker.username }}
-- name: knative-docker-user-pass
-{{- end }}
-{{- end }}

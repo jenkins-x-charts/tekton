@@ -1,3 +1,4 @@
+# Source: tekton/templates/200-clusterrolebinding.yaml
 # Copyright 2018 The Knative Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,16 +12,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-{{- if .Values.serviceaccount.enabled }}
-apiVersion: v1
-kind: ServiceAccount
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
 metadata:
-  name: {{ template "build-bot.name" . }}
-secrets:
-{{- if .Values.auth.git.username }}
-- name: knative-git-user-pass
-{{- end }}
-{{- if .Values.auth.docker.username }}
-- name: knative-docker-user-pass
-{{- end }}
-{{- end }}
+  name:  tekton-pipelines-jx
+subjects:
+  - kind: ServiceAccount
+    name: tekton-pipelines
+    namespace: jx
+roleRef:
+  kind: ClusterRole
+  name:  tekton-pipelines
+  apiGroup: rbac.authorization.k8s.io
