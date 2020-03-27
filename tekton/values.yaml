@@ -28,6 +28,7 @@ controller:
 
 serviceaccount:
   enabled: true
+  annotations: {}
 
 webhook:
   enabled: true
