@@ -21,8 +21,8 @@ spec:
     kind: Condition
     plural: conditions
     categories:
-      - all
-      - tekton-pipelines
+    - all
+    - tekton-pipelines
   scope: Namespaced
   # Opt into the status subresource so metadata.generation
   # starts to increment
