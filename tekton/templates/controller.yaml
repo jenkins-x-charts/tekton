@@ -51,6 +51,7 @@ spec:
           "-pr-image", "{{ .Values.image.pullrequest }}:{{ .Values.image.upstreamtag }}",
           "-imagedigest-exporter-image", "{{ .Values.image.imagedigestexporter }}.{{ .Values.image.upstreamtag }}",
           "-build-gcs-fetcher-image", "{{ .Values.image.gcsfetcher }}",
+          "-namespace", "{{ .Release.Namespace }}",
         ]
         env:
           - name: SYSTEM_NAMESPACE
