@@ -1,5 +1,6 @@
 image:
-  upstreamtag: v20200414-2b72e7c6
+  # 0.8.0 images with backports come from https://github.com/abayer/tektoncd-pipeline/tree/0.8.0-for-jx
+  upstreamtag: 0.8.0-jx-3
   kubeconfigwriter: gcr.io/abayer-pipeline-crd/tekton-for-jx/kubeconfigwriter
   credsinit: gcr.io/abayer-pipeline-crd/tekton-for-jx/creds-init
   gitinit: gcr.io/abayer-pipeline-crd/tekton-for-jx/git-init
