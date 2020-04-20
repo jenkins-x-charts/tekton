@@ -1,3 +1,4 @@
+{{- if .Values.cluster.resources.create }}
 # Copyright 2018 The Knative Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,3 +40,4 @@ spec:
     ranges:
     - min: 1
       max: 65535
+{{- end -}}

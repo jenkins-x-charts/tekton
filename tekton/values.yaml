@@ -36,5 +36,11 @@ webhook:
 rbac:
   cluster: true
 
+cluster:
+  resources:
+    create: true
+  crds:
+    create: true
+
 pvc:
   size: 5Gi
