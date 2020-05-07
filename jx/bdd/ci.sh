@@ -23,6 +23,8 @@ mkdir -p $JX_HOME
 # lets avoid the git/credentials causing confusion during the test
 export XDG_CONFIG_HOME=$JX_HOME
 
+jx install dependencies --all
+
 jx --version
 
 mkdir -p $JX_HOME/git
