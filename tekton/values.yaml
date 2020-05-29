@@ -44,3 +44,4 @@ cluster:
 
 pvc:
   size: 5Gi
+  storageClassName:
