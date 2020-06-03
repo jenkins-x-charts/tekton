@@ -20,5 +20,7 @@ data:
   # default size of the PVC mounted
   size: "{{ .Values.pvc.size }}"
 
+  {{- if .Values.pvc.storageClassName }}
   # storage class of the PVC volume
-  # storageClassName: storage-class-name
+  storageClassName: {{ .Values.pvc.storageClassName }}
+  {{- end }}
