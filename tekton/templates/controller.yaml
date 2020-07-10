@@ -72,6 +72,8 @@ spec:
             value: config-artifact-pvc
           - name: METRICS_DOMAIN
             value: tekton.dev/pipeline
+          - name: KUBERNETES_MIN_VERSION
+            value: v1.14.0
         volumeMounts:
         - name: config-logging
           mountPath: /etc/config-logging

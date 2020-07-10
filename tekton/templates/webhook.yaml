@@ -60,6 +60,8 @@ spec:
           value: tekton-pipelines-webhook
         - name: METRICS_DOMAIN
           value: tekton.dev/pipeline
+        - name: KUBERNETES_MIN_VERSION
+          value: v1.14.0
         ports:
         - name: metrics
           containerPort: 9090
