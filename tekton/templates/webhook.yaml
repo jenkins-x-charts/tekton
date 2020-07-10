@@ -21,19 +21,25 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ template "tekton.name" . }}
     app.kubernetes.io/component: webhook-controller
+    pipeline.tekton.dev/release: v0.11.3
+    version: v0.11.3
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: {{ template "tekton.name" . }}-webhook
+      role: webhook
   template:
     metadata:
       annotations:
         cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
       labels:
         app: {{ template "tekton.name" . }}-webhook
+        role: webhook
         app.kubernetes.io/name: {{ template "tekton.name" . }}
         app.kubernetes.io/component: webhook-controller
+        pipeline.tekton.dev/release: v0.11.3
+        version: v0.11.3
     spec:
       serviceAccountName: {{ template "tekton.name" . }}
       containers:
@@ -42,15 +48,53 @@ spec:
         # and substituted here.
         image: {{ .Values.image.webhook }}:{{ .Values.image.upstreamtag }}
         env:
-          - name: SYSTEM_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-        volumeMounts:
-        - name: config-logging
-          mountPath: /etc/config-logging
-      volumes:
-        - name: config-logging
-          configMap:
-            name: config-logging
+        - name: SYSTEM_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CONFIG_LOGGING_NAME
+          value: config-logging
+        - name: CONFIG_OBSERVABILITY_NAME
+          value: config-observability
+        - name: WEBHOOK_SERVICE_NAME
+          value: tekton-pipelines-webhook
+        - name: METRICS_DOMAIN
+          value: tekton.dev/pipeline
+        ports:
+        - name: metrics
+          containerPort: 9090
+        - name: profiling
+          containerPort: 8008
+        - name: https-webhook
+          containerPort: 8443
+        securityContext:
+          allowPrivilegeEscalation: false
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ template "tekton.name" . }}-webhook
+    role: webhook
+    pipeline.tekton.dev/release: v0.11.3
+    version: v0.11.3
+  name: {{ template "tekton.name" . }}-webhook
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+    # Define metrics and profiling for them to be accessible within service meshes.
+    - name: http-metrics
+      port: 9090
+      targetPort: 9090
+    - name: http-profiling
+      port: 8008
+      targetPort: 8008
+    - name: https-webhook
+      port: 443
+      targetPort: 8443
+  selector:
+    app: {{ template "tekton.name" . }}-webhook
+    role: webhook
+
 {{- end -}}

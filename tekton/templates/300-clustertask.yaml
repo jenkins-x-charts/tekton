@@ -18,11 +18,18 @@ metadata:
   name: clustertasks.tekton.dev
 spec:
   group: tekton.dev
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+  - name: v1beta1
+    served: true
+    storage: false
   names:
     kind: ClusterTask
     plural: clustertasks
     categories:
-    - all
+    - tekton
     - tekton-pipelines
   scope: Cluster
   # Opt into the status subresource so metadata.generation
