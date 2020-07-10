@@ -20,6 +20,8 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ template "tekton.name" . }}
     app.kubernetes.io/component: controller
+    pipeline.tekton.dev/release: v0.11.3
+    version: v0.11.3
 spec:
   replicas: 1
   selector:
@@ -33,6 +35,8 @@ spec:
         app: {{ template "tekton.name" . }}-controller
         app.kubernetes.io/name: {{ template "tekton.name" . }}
         app.kubernetes.io/component: controller
+        pipeline.tekton.dev/release: v0.11.3
+        version: v0.11.3
     spec:
       serviceAccountName: {{ template "tekton.name" . }}
       containers:
@@ -44,13 +48,13 @@ spec:
           "-kubeconfig-writer-image", "{{ .Values.image.kubeconfigwriter }}:{{ .Values.image.upstreamtag }}",
           "-creds-image", "{{ .Values.image.credsinit }}:{{ .Values.image.upstreamtag }}",
           "-git-image", "{{ .Values.image.gitinit }}:{{ .Values.image.upstreamtag }}",
-          "-nop-image", "{{ .Values.image.nop }}:{{ .Values.image.upstreamtag }}",
-          "-bash-noop-image", "{{ .Values.image.bash }}:{{ .Values.image.upstreamtag }}",
-          "-gsutil-image", "{{ .Values.image.gsutil }}:{{ .Values.image.upstreamtag }}",
+          "-nop-image", "tianon/true",
+          "-shell-image", "busybox",
+          "-gsutil-image", "google/cloud-sdk",
           "-entrypoint-image", "{{ .Values.image.entrypoint }}:{{ .Values.image.upstreamtag }}",
           "-pr-image", "{{ .Values.image.pullrequest }}:{{ .Values.image.upstreamtag }}",
           "-imagedigest-exporter-image", "{{ .Values.image.imagedigestexporter }}.{{ .Values.image.upstreamtag }}",
-          "-build-gcs-fetcher-image", "{{ .Values.image.gcsfetcher }}",
+          "-build-gcs-fetcher-image", "{{ .Values.image.gcsfetcher }}.{{ .Values.image.upstreamtag }}",
           "-namespace", "{{ .Release.Namespace }}",
         ]
         env:
@@ -62,8 +66,14 @@ spec:
             value: config-logging
           - name: CONFIG_OBSERVABILITY_NAME
             value: config-observability
+          - name: CONFIG_ARTIFACT_BUCKET_NAME
+            value: config-artifact-bucket
+          - name: CONFIG_ARTIFACT_PVC_NAME
+            value: config-artifact-pvc
           - name: METRICS_DOMAIN
             value: tekton.dev/pipeline
+          - name: KUBERNETES_MIN_VERSION
+            value: v1.14.0
         volumeMounts:
         - name: config-logging
           mountPath: /etc/config-logging
@@ -71,4 +81,25 @@ spec:
         - name: config-logging
           configMap:
             name: config-logging
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ template "tekton.name" . }}-controller
+    pipeline.tekton.dev/release: v0.11.3
+    version: v0.11.3
+  name: {{ template "tekton.name" . }}-controller
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+    - name: http-metrics
+      port: 9090
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    app: {{ template "tekton.name" . }}-controller
+
+
 {{- end -}}
