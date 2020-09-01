@@ -19,6 +19,7 @@ auth:
     password:
     url: https://index.docker.io/v1/
     # url: https://gcr.io
+    host: docker.io
 
 controller:
   enabled: true
