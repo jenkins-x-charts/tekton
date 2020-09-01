@@ -1,5 +1,5 @@
-# Source: tekton/templates/config-artifact-pvc.yaml
-# Copyright 2019 The Knative Authors
+# Source: tekton/templates/500-webhooks.yaml
+# Copyright 2020 The Tekton Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: ConfigMap
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
 metadata:
-  name: config-artifact-pvc
-data:
-  # default size of the PVC mounted
-  size: "5Gi"
+  name: webhook.pipeline.tekton.dev
+  labels:
+    pipeline.tekton.dev/release: v0.11.3
+webhooks:
+  - admissionReviewVersions:
+      - v1beta1
+    clientConfig:
+      service:
+        name: tekton-pipelines-webhook
+        namespace: jx
+    failurePolicy: Fail
+    sideEffects: None
+    name: webhook.pipeline.tekton.dev
