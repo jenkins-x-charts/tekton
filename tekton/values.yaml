@@ -15,6 +15,11 @@ auth:
     password:
     url: https://github.com
   docker:
+    # if specified use the docker config.json style secret like this:
+    # https://github.com/tektoncd/pipeline/blob/master/docs/auth.md#configuring-docker-authentication-for-docker
+    configJson: ""
+
+    # otherwise use basic auth style secret
     username:
     password:
     url: https://index.docker.io/v1/
