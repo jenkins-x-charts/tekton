@@ -17,3 +17,4 @@ kind: ServiceAccount
 metadata:
   name: tekton-bot
 secrets:
+- name: knative-docker-user-pass
