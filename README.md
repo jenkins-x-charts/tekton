@@ -1,5 +1,3 @@
 # tekton
 
-Helm chart for [Tekton Pipelines](https://github.com/knative/build-pipeline/).
-
-See chart [readme](./tekton/README.md) for install and config options.
+ARCHIVED - PLEASE USE https://github.com/cdfoundation/tekton-helm-chart
